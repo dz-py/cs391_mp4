@@ -27,10 +27,11 @@ interface PageProps {
   params: {
     symbol: string;
   };
-  _searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function StockPage({ params, _searchParams }: PageProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function StockPage({ params, searchParams }: PageProps) {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [loading, setLoading] = useState(true);

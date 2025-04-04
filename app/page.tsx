@@ -19,7 +19,7 @@ export default function Home() {
     try {
       // Navigate to the stock details page
       router.push(`/stock/${symbol}`);
-    } catch (err) {
+    } catch {
       setError('Failed to navigate to stock page');
       setLoading(false);
     }

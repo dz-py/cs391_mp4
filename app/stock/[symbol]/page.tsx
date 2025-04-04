@@ -8,8 +8,23 @@ interface ErrorResponse {
   isRateLimit?: boolean;
 }
 
+interface StockData {
+  'Global Quote': {
+    '01. symbol': string;
+    '02. open': string;
+    '03. high': string;
+    '04. low': string;
+    '05. price': string;
+    '06. volume': string;
+    '07. latest trading day': string;
+    '08. previous close': string;
+    '09. change': string;
+    '10. change percent': string;
+  };
+}
+
 export default function StockPage({ params }: { params: { symbol: string } }) {
-  const [stockData, setStockData] = useState<any>(null);
+  const [stockData, setStockData] = useState<StockData | null>(null);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +40,7 @@ export default function StockPage({ params }: { params: { symbol: string } }) {
         }
         
         setStockData(data);
-      } catch (err) {
+      } catch {
         setError({ error: 'Failed to fetch stock data. Please try again later.' });
       } finally {
         setLoading(false);

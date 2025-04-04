@@ -23,7 +23,14 @@ interface StockData {
   };
 }
 
-export default function StockPage({ params }: { params: { symbol: string } }) {
+interface PageProps {
+  params: {
+    symbol: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function StockPage({ params, searchParams }: PageProps) {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [loading, setLoading] = useState(true);

@@ -2,7 +2,7 @@ import StockDisplay from './StockDisplay';
 
 interface PageProps {
   params: Promise<{ symbol: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function Page({ params }: PageProps) {

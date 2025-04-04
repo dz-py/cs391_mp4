@@ -1,5 +1,11 @@
 import StockDisplay from './StockDisplay';
 
-export default function Page({ params }: { params: { symbol: string } }) {
-  return <StockDisplay symbol={params.symbol} />;
+interface PageProps {
+  params: Promise<{ symbol: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default async function Page({ params }: PageProps) {
+  const resolvedParams = await params;
+  return <StockDisplay symbol={resolvedParams.symbol} />;
 } 

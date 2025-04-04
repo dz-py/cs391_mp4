@@ -27,10 +27,10 @@ interface PageProps {
   params: {
     symbol: string;
   };
-  searchParams: { [key: string]: string | string[] | undefined };
+  _searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function StockPage({ params, searchParams }: PageProps) {
+export default function StockPage({ params, _searchParams }: PageProps) {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [loading, setLoading] = useState(true);
